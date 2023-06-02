@@ -5,12 +5,15 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import RequireAuth from "./components/RequireAuth";
+
 import Profile from "./components/Profile";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Registration from "./components/Registration";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
+import { RequireAuth } from "react-auth-kit";
+import TermsAndConditions from "./components/TermsAndConditions";
+import ManageUser from "./components/ManageUser";
 
 function App() {
   return (
@@ -23,10 +26,20 @@ function App() {
             <Route path="/register" element={<Registration />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
+            <Route path="/manage-user" element={<ManageUser />} />
 
-            <Route element={<RequireAuth />}>
-              <Route path="/profile" element={<Profile />} />
-            </Route>
+            <Route
+              path="/profile/:username"
+              element={
+                <RequireAuth loginPath="/login">
+                  <Profile />
+                </RequireAuth>
+              }
+            />
           </Route>
         </Routes>
       </ErrorBoundary>

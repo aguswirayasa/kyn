@@ -5,13 +5,14 @@ import FacebookSignIn from "./FacebookSignIn";
 import GoogleSignIn from "./GoogleSignIn";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "../api/axios";
-import useAuth from "../hooks/useAuth";
+import { useSignIn } from "react-auth-kit";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 const GOOGLE_LOGIN_URL = "auth/google-login-callback";
 const FACEBOOK_LOGIN_URL = "auth/facebook-login-callback";
 const Login = () => {
-  const { setAuth, setIsAuthEmpty } = useAuth();
+  const signIn = useSignIn();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState("");
   const handleGoogleLogin = (credentialResponse) => {
@@ -23,16 +24,23 @@ const Login = () => {
       .post(GOOGLE_LOGIN_URL, { credential })
       .then((response) => {
         if (response.data) {
-          // Handle the response from the server if needed
-          const token = response?.data?.token;
-          const username = response?.data?.username;
-          const picture = response?.data?.picture;
-          // Update the credentials state and store it in local storage
-          const credentials = { token, username, picture };
-          setAuth(credentials);
-          setIsAuthEmpty(false);
-          localStorage.setItem("auth", JSON.stringify(credentials));
-          navigate(from, { replace: true });
+          signIn({
+            token: response?.data?.token,
+            tokenType: "Bearer",
+            expiresIn: 3600,
+            authState: {
+              username: response?.data?.username,
+              picture: response?.data?.picture,
+              role: response?.data?.role.name,
+            },
+          });
+          navigate(
+            location.state?.from?.pathname ||
+              (response?.data?.username
+                ? "/profile/" + response.data.username
+                : "/"),
+            { replace: true }
+          );
           console.log(response.data);
         }
         setErrorMsg("No Server Response");
@@ -59,16 +67,21 @@ const Login = () => {
       .post(FACEBOOK_LOGIN_URL, { username, email, id, picture })
       .then((res) => {
         if (res.data) {
-          // Handle the response from the server if needed
-          const token = res?.data?.token;
-          const username = res?.data?.username;
-          const picture = res?.data?.picture;
-          // Update the credentials state and store it in local storage
-          const credentials = { token, username, picture };
-          setAuth(credentials);
-          setIsAuthEmpty(false);
-          localStorage.setItem("auth", JSON.stringify(credentials));
-          navigate(from, { replace: true });
+          signIn({
+            token: res?.data?.token,
+            tokenType: "Bearer",
+            expiresIn: 3600,
+            authState: {
+              username: res?.data?.username,
+              picture: res?.data?.picture,
+              role: res?.data?.role.name,
+            },
+          });
+          navigate(
+            location.state?.from?.pathname ||
+              (res?.data?.username ? "/profile/" + res.data.username : "/"),
+            { replace: true }
+          );
           console.log(res.data);
         }
         setErrorMsg("No Server Response");
@@ -85,7 +98,60 @@ const Login = () => {
         }
       });
   };
-
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    enableReinitialize: true,
+    validationSchema: Yup.object({
+      username: Yup.string().required("This field is required"),
+      password: Yup.string().required("This field is required"),
+    }),
+    onSubmit: (user) => {
+      const { username, password } = user;
+      axios
+        .post(
+          "/auth/login",
+          { username, password },
+          {
+            withCredentials: true,
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+          if (response.data) {
+            signIn({
+              token: response?.data?.token,
+              tokenType: "Bearer",
+              expiresIn: 3600,
+              authState: {
+                username: response?.data?.username,
+                picture: response?.data?.picture,
+                role: response?.data?.roles[0],
+              },
+            });
+            navigate(
+              location.state?.from?.pathname ||
+                (response?.data?.username
+                  ? "/profile/" + response.data.username
+                  : "/"),
+              { replace: true }
+            );
+          }
+        })
+        .catch((error) => {
+          if (!error?.response) {
+            setErrorMsg("No Server Response");
+          } else if (error.response?.status === 401) {
+            setErrorMsg("Invalid username or password.");
+          } else {
+            setErrorMsg("Login Failed");
+          }
+          console.log(error);
+        });
+    },
+  });
   return (
     <section className="min-h-screen flex items-stretch text-white ">
       <div
@@ -146,16 +212,28 @@ const Login = () => {
               <GoogleSignIn handleGoogleLogin={handleGoogleLogin} />
             </div>
           </div>
-          <p className="text-gray-100">or use email your account</p>
-          <form action="" className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
+          <p className="text-gray-100">or use your account username</p>
+          <form
+            action=""
+            className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto"
+            onSubmit={formik.handleSubmit}
+          >
             <div className="pb-2 pt-4">
               <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"
                 className="block w-full p-4 text-lg rounded-sm bg-black"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.username}
               />
+              {formik.touched.username && formik.errors.username ? (
+                <div className="text-red-500 text-left">
+                  {formik.errors.username}
+                </div>
+              ) : null}
             </div>
             <div className="pb-2 pt-4">
               <input
@@ -164,13 +242,22 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="Password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
               />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="text-red-500 text-left">
+                  {formik.errors.password}
+                </div>
+              ) : null}
             </div>
-            <div className="text-right text-gray-400 hover:underline hover:text-gray-100">
-              <a href="/">Forgot your password?</a>
-            </div>
+
             <div className="px-4 pb-2 pt-4">
-              <button className="uppercase block w-full p-4 text-lg rounded-full bg-accent hover:bg-accent-dark focus:outline-none">
+              <button
+                className="uppercase block w-full p-4 text-lg rounded-full bg-accent hover:bg-accent-dark focus:outline-none"
+                type="submit"
+              >
                 sign in
               </button>
             </div>

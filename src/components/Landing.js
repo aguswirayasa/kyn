@@ -1,6 +1,8 @@
 import React from "react";
-
+import { useIsAuthenticated } from "react-auth-kit";
+import { Link } from "react-router-dom";
 export const Landing = () => {
+  const auth = useIsAuthenticated();
   return (
     <div className="bg-gray-100">
       <div className="relative">
@@ -19,12 +21,14 @@ export const Landing = () => {
             <p className="text-lg text-gray-300 mb-8">
               Easily keep track of all the stores in your neighborhood.
             </p>
-            <a
-              href="add-store"
-              className="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-700"
-            >
-              Add Store
-            </a>
+            {!auth() && (
+              <Link
+                to="/register"
+                className="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-700"
+              >
+                Get Started
+              </Link>
+            )}
           </div>
         </div>
       </div>

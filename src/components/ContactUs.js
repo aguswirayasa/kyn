@@ -6,12 +6,12 @@ const ContactUs = () => {
       {/* Hero Section */}
       <section className="relative">
         <div
-          className="h-96 w-full"
+          className="sm:h-96 h-56 w-full"
           style={{
             background: "linear-gradient(150deg, #00dffe, #f7f4ef)",
           }}
         >
-          <div className="w-5/12 p-10">
+          <div className="lg:w-5/12 p-10 sm:w-3/4  md:w-3/5 ">
             <h1 className="text-4xl md:text-6xl font-bold text-white text-left uppercase drop-shadow-lg">
               Get in touch
             </h1>
@@ -24,10 +24,10 @@ const ContactUs = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 h-72">
-        <div className="container">
-          <div className="absolute top-80 inset-0  flex flex-col items-center justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-20">
+      <section className="py-16">
+        <div className="lg:h-56">
+          <div className="flex w-full items-center justify-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-4 md:mx-20 lg:absolute">
               {/* Talk to Us Card */}
               <motion.div
                 initial={{ opacity: 0, y: 100 }}
@@ -58,7 +58,7 @@ const ContactUs = () => {
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="bg-white rounded-lg shadow-lg p-8  text-center grid place-items-center gap-3"
+                className="bg-white rounded-lg shadow-lg p-8 text-center grid place-items-center gap-3"
               >
                 <img
                   width="50"

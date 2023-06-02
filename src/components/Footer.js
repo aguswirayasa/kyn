@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,18 +14,18 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <nav className="flex space-x-4">
-            <a href="/" className="hover:text-accent">
+            <Link to="/" className="hover:text-accent">
               Home
-            </a>
-            <a href="/about" className="hover:text-accent">
+            </Link>
+            <Link to="about-us" className="hover:text-accent">
               About Us
-            </a>
-            <a href="/contact" className="hover:text-accent">
+            </Link>
+            <Link to="/contact-us" className="hover:text-accent">
               Contact Us
-            </a>
-            <a href="/terms" className="hover:text-accent">
+            </Link>
+            <Link to="/terms-and-conditions" className="hover:text-accent">
               Terms and Conditions
-            </a>
+            </Link>
           </nav>
         </div>
         <div className="grid place-items-center p-2">
