@@ -49,31 +49,27 @@ To run the Know Your Neighborhood project locally, please follow these steps:
 
 ## Screenshoot
 ### Landing Page
-![landing page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/landing.png)
+![landing page](https://github.com/aguswirayasa/kyn/blob/master/Know%20Your%20Neighborhood%20Screenshoot/landing.png)
 
 ### About us Page
-![About us page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/about-us.png)
+![About us page](https://github.com/aguswirayasa/kyn/blob/master/Know%20Your%20Neighborhood%20Screenshoot/about-us.jpeg)
 ### Contact us Page
 
-![Contact us page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/contact-us.png)
+![Contact us page](https://github.com/aguswirayasa/kyn/blob/master/Know%20Your%20Neighborhood%20Screenshoot/contact-us.png)
 
 ### Login Page
-![Login page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/login.png)
+![Login page](https://github.com/aguswirayasa/kyn/blob/master/Know%20Your%20Neighborhood%20Screenshoot/login.png)
 
 ### Registration Page
-![Registration page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/registration.png)
+![Registration page](https://github.com/aguswirayasa/kyn/blob/master/Know%20Your%20Neighborhood%20Screenshoot/registration.png)
 
 ### Dashboard
-![Dashboard page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/dashboard.png)
-
-### Profile Page
-![Profile page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/profile.png)
+![Dashboard page](https://github.com/aguswirayasa/kyn/blob/master/Know%20Your%20Neighborhood%20Screenshoot/profile.png)
 
 ### Manage user Page
-![Manage user page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/user-management.png)
+![Manage user page](https://github.com/aguswirayasa/kyn/blob/master/Know%20Your%20Neighborhood%20Screenshoot/manage-user.png)
 
-### Manage car Page
-![Manage car page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/car-management.png)
+
 
 
    
