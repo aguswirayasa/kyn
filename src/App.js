@@ -14,6 +14,7 @@ import ContactUs from "./components/ContactUs";
 import { RequireAuth } from "react-auth-kit";
 import TermsAndConditions from "./components/TermsAndConditions";
 import ManageUser from "./components/ManageUser";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -40,6 +41,8 @@ function App() {
                 </RequireAuth>
               }
             />
+
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </ErrorBoundary>

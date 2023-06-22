@@ -19,7 +19,16 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // Render the fallback UI
-      return <div>Oops! Something went wrong.</div>;
+      return (
+        <div className="grid place-items-center">
+          <div className="rounded-lg shadow-md ">
+            <h1 className="text-2xl font-bold">Oops! Something went wrong.</h1>
+            <button className="px-6 py-3 bg-accent rounded-md text-white">
+              Go back
+            </button>
+          </div>
+        </div>
+      );
     }
 
     // Render the children components

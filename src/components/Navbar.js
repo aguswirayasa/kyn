@@ -3,6 +3,7 @@ import logo from "../assets/images/logo.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthUser, useSignOut } from "react-auth-kit";
+import SwitchButton from "./SwitchButton";
 
 const Navbar = () => {
   const signOut = useSignOut();
