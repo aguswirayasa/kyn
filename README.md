@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Know Your Neighborhood
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application that allow user to get information about local store on their neighborhood. Key feature of this application is social login option that allow user to access the site by simply using their facerbook or google without the need of registering an account, this is done with the help of OAuth2.
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+The Know-Your-Neighborhood website consists of the following Key pages
 
-### `npm start`
+    Home Page
+    Registration Page
+    Login Page with social login (Facebook)
+    Contact us Page
+    About us Page
+    Stores Page
+    Store Detail Page
+    Post Store
+    View Profile page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Customers can login using the existing API and fetch basic information such as name, email from API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+The ABC-Cars-Portal project utilizes the following technologies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Front-end: React Js
+- Back-end: Springboot
+- Database: MySQL
+- Authentication: Spring Security, JWT,OAuth2
+- UI/UX Design: CSS, Tailwind and Framer Motion
 
-### `npm run build`
+## Installation and Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run the Know Your Neighborhood project locally, please follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Import Existing Project into Visual Studio Code or other IDE that supports Java.
+2. Install all the dependancy by typing
+   ```
+   npm install
+   ```
+4. Add you facebook app id on FacebookSignIn.js
+   ````````````````````````````````````````````````````````
+      appId="<YOUR_FACEBOOK_APP_ID>"
+   `````````````````````````````````````````````````````````
+6. Run the project by typing
+   ```
+   npm start
+   ```
+7. Configure the back end [here](https://github.com/aguswirayasa/kyn-api)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Screenshoot
+### Landing Page
+![landing page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/landing.png)
 
-### `npm run eject`
+### About us Page
+![About us page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/about-us.png)
+### Contact us Page
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Contact us page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/contact-us.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Login Page
+![Login page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/login.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Registration Page
+![Registration page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/registration.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Dashboard
+![Dashboard page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/dashboard.png)
 
-## Learn More
+### Profile Page
+![Profile page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/profile.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Manage user Page
+![Manage user page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/user-management.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Manage car Page
+![Manage car page](https://github.com/aguswirayasa/ABC-Cars-Portal/blob/main/ABC%20Cars%20Portal%20Screenshoot/car-management.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
